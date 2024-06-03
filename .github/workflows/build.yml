@@ -12,7 +12,8 @@ jobs:
               curl -O https://dev.azure.com/chaowenguoback/ci/_apis/git/repositories/ci/items?path=/timebuckwall.mjs
               curl -O https://dev.azure.com/chaowenguoback/ci/_apis/git/repositories/ci/items?path=/timewall.mjs
               sudo apt install -y --no-install-recommends node-commander lxde
-              cp $(id_ed25519.secureFilePath) ~/.ssh
+              mkdir ~/.ssh/
+              echo '${{secrets.id_ed25519}}' > ~/.ssh/id_ed25519
               chmod 400 ~/.ssh/id_ed25519
               npm install playwright-chromium@1.40.0 lodash-es jsdom sqlite3 sqlite ssh2-promise html-entities tough-cookie unraw ioredis json5 webdriverio git+https://github.com/fancy45daddy/tlsclient.js
               awk -i inplace '/^import /{seen++} seen && !/^import /{print "import formDataToStream from \x27./helpers/formDataToStream.js\x27;"; seen=0}1' $(npm root)/axios/lib/axios.js
