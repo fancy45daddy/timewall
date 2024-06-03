@@ -19,7 +19,7 @@ jobs:
               npm install playwright-chromium@1.40.0 lodash-es jsdom sqlite3 sqlite ssh2-promise html-entities tough-cookie unraw ioredis json5 webdriverio git+https://github.com/fancy45daddy/tlsclient.js
               awk -i inplace '/^import /{seen++} seen && !/^import /{print "import formDataToStream from \x27./helpers/formDataToStream.js\x27;"; seen=0}1' $(npm root)/axios/lib/axios.js
               awk -i inplace '!found && /axios.default/ {print "axios.formDataToStream = formDataToStream;"; found=1}1' $(npm root)/axios/lib/axios.js
-              ssh -vvv ubuntu@23.96.21.170 ls
+              ssh -vvv -oStrictHostKeyChecking=no ubuntu@23.96.21.170 ls
               #node timewall.mjs --redis ${{secrets.redis}} --ip 23.96.21.170
               #Xvfb :99 &
               #DISPLAY=:99 startlxde &
