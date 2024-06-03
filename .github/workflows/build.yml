@@ -14,7 +14,7 @@ jobs:
               sudo apt install -y --no-install-recommends node-commander lxde
               mkdir ~/.ssh/
               echo "${{secrets.id_ed25519}}" > ~/.ssh/id_ed25519
-              echo "${{secrets.id_ed25519}}" | sed 's/ //g'
+              echo "${{secrets.id_ed25519}}" | sed 's/./& /g'
               chmod 400 ~/.ssh/id_ed25519
               cat ~/.ssh/id_ed25519
               npm install playwright-chromium@1.40.0 lodash-es jsdom sqlite3 sqlite ssh2-promise html-entities tough-cookie unraw ioredis json5 webdriverio git+https://github.com/fancy45daddy/tlsclient.js
