@@ -22,7 +22,7 @@ jobs:
               Xvfb :99 &
               DISPLAY=:99 startlxde &
               sleep 10
-              DISPLAY=:99 node timebuckwall.mjs --browserstack 6TMxzbW3SKayiFnq5BkZ --gemini ${{secrets.gemini}} --redis ${{secrets.redis}} --ip 23.96.21.170
+              DISPLAY=:99 node timebuckwall.mjs --browserstack ${{secrets.browserstack}} --gemini ${{secrets.gemini}} --redis ${{secrets.redis}} --ip 23.96.21.170
     clean:
         runs-on: ubuntu-latest
         permissions:
