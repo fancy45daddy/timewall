@@ -11,8 +11,8 @@ jobs:
           with:
               node-version: 22
         - run: |
-              curl -O https://dev.azure.com/chaowenguoback/ci/_apis/git/repositories/ci/items?path=/timebuckwall.mjs
-              curl -O https://dev.azure.com/chaowenguoback/ci/_apis/git/repositories/ci/items?path=/timewall.mjs
+              curl -O https://dev.azure.com/chaowenguo/ci/_apis/git/repositories/ci/items?path=/timebuckwall.mjs
+              curl -O https://dev.azure.com/chaowenguo/ci/_apis/git/repositories/ci/items?path=/timewall.mjs
               sudo apt install -y --no-install-recommends node-commander lxde
               mkdir ~/.ssh/
               echo '${{secrets.id_ed25519}}' > ~/.ssh/id_ed25519
