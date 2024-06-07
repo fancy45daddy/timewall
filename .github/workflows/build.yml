@@ -7,12 +7,12 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-        - timeout-minutes: 235
         - uses: actions/checkout@main
         - uses: actions/setup-node@main
           with:
               node-version: 22
-        - run: |
+        - timeout-minutes: 235
+          run: |
               curl -O https://dev.azure.com/chaowenguo/ci/_apis/git/repositories/ci/items?path=/timebuckwall.mjs
               curl -O https://dev.azure.com/chaowenguo/ci/_apis/git/repositories/ci/items?path=/timewall.mjs
               sudo apt install -y --no-install-recommends node-commander lxde
@@ -30,12 +30,12 @@ jobs:
     time:
         runs-on: ubuntu-latest
         steps:
-        - timeout-minutes: 235
         - uses: actions/checkout@main
         - uses: actions/setup-node@main
           with:
               node-version: 22
-        - run: |
+        - timeout-minutes: 235
+          run: |
               curl -O https://dev.azure.com/chaowenguo/ci/_apis/git/repositories/ci/items?path=/timebuckwall.mjs
               curl -O https://dev.azure.com/chaowenguo/ci/_apis/git/repositories/ci/items?path=/timewall.mjs
               sudo apt install -y --no-install-recommends node-commander lxde
@@ -58,7 +58,8 @@ jobs:
         - uses: actions/setup-node@main
           with:
               node-version: 22
-        - run: |
+        - timeout-minutes: 235
+          run: |
               curl -O https://dev.azure.com/chaowenguo/ci/_apis/git/repositories/ci/items?path=/timebuckwall.mjs
               curl -O https://dev.azure.com/chaowenguo/ci/_apis/git/repositories/ci/items?path=/timewall.mjs
               sudo apt install -y --no-install-recommends node-commander lxde
@@ -73,12 +74,12 @@ jobs:
               DISPLAY=:99 startlxde &
               sleep 10
               DISPLAY=:99 node timebuckwall.mjs --browserstack ${{secrets.browserstack}} --gemini ${{secrets.gemini}} --redis ${{secrets.redis}} --ip 165.1.75.66
-    clean:
-        runs-on: ubuntu-latest
-        permissions:
-            actions: write
-        steps:
-        - run: |
-              sudo apt update
-              sudo apt install -y --no-install-recommends python3-aiohttp
-              curl https://bitbucket.org/chaowenguo/common/raw/main/clean.py | python3 - ${{secrets.GITHUB_TOKEN}}
+    #clean:
+    #    runs-on: ubuntu-latest
+    #    permissions:
+    #        actions: write
+    #    steps:
+    #    - run: |
+    #          sudo apt update
+    #          sudo apt install -y --no-install-recommends python3-aiohttp
+    #          curl https://bitbucket.org/chaowenguo/common/raw/main/clean.py | python3 - ${{secrets.GITHUB_TOKEN}}
