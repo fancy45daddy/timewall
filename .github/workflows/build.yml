@@ -7,6 +7,7 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
+        - timeout-minutes: 235
         - uses: actions/checkout@main
         - uses: actions/setup-node@main
           with:
@@ -29,6 +30,7 @@ jobs:
     time:
         runs-on: ubuntu-latest
         steps:
+        - timeout-minutes: 235
         - uses: actions/checkout@main
         - uses: actions/setup-node@main
           with:
@@ -51,6 +53,7 @@ jobs:
     time1:
         runs-on: ubuntu-latest
         steps:
+        - timeout-minutes: 235
         - uses: actions/checkout@main
         - uses: actions/setup-node@main
           with:
