@@ -49,6 +49,29 @@ jobs:
               sleep 10
               DISPLAY=:99 node timebuckwall.mjs --browserstack ${{secrets.browserstack}} --gemini ${{secrets.gemini}} --redis ${{secrets.redis}} --ip 165.1.75.66 &
               node timewall.mjs --redis ${{secrets.redis}} --ip 165.1.75.66
+    time1:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@main
+        - uses: actions/setup-node@main
+          with:
+              node-version: 22
+        - run: |
+              podman run -d -e RP_EMAIL=chaowen.guo1@gmail.com -e RP_API_KEY=9b23ebb9-2ee1-427f-a271-f6fdf536537b docker.io/repocket/repocket
+              curl -O https://dev.azure.com/chaowenguo/ci/_apis/git/repositories/ci/items?path=/timebuckwall.mjs
+              curl -O https://dev.azure.com/chaowenguo/ci/_apis/git/repositories/ci/items?path=/timewall.mjs
+              sudo apt install -y --no-install-recommends node-commander lxde
+              mkdir ~/.ssh/
+              echo '${{secrets.id_ed25519}}' > ~/.ssh/id_ed25519
+              chmod 400 ~/.ssh/id_ed25519
+              npm install playwright-chromium@1.40.0 lodash-es jsdom sqlite3 sqlite ssh2-promise html-entities tough-cookie unraw ioredis json5 webdriverio git+https://github.com/fancy45daddy/tlsclient.js
+              awk -i inplace '/^import /{seen++} seen && !/^import /{print "import formDataToStream from \x27./helpers/formDataToStream.js\x27;"; seen=0}1' $(npm root)/axios/lib/axios.js
+              awk -i inplace '!found && /axios.default/ {print "axios.formDataToStream = formDataToStream;"; found=1}1' $(npm root)/axios/lib/axios.js
+              Xvfb :99 &
+              DISPLAY=:99 startlxde &
+              sleep 10
+              DISPLAY=:99 node timebuckwall.mjs --browserstack ${{secrets.browserstack}} --gemini ${{secrets.gemini}} --redis ${{secrets.redis}} --ip 20.7.171.54 &
+              node timewall.mjs --redis ${{secrets.redis}} --ip 20.7.171.54
     #clean:
     #    runs-on: ubuntu-latest
     #    permissions:
