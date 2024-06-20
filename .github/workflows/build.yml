@@ -25,7 +25,7 @@ jobs:
               Xvfb :99 &
               DISPLAY=:99 startlxde &
               sleep 10
-              DISPLAY=:99 node timebuckwall.mjs --browserstack ${{secrets.browserstack}} --gemini ${{secrets.gemini}} --redis ${{secrets.redis}} --ip 192.9.225.198 &
+              DISPLAY=:99 node timebuckwall.mjs --browserstackName ${{secrets.browserstackName}} --browserstackKey ${{secrets.browserstackKey}} --gemini ${{secrets.gemini}} --redis ${{secrets.redis}} --ip 192.9.225.198 &
               node timewall.mjs --redis ${{secrets.redis}} --ip 192.9.225.198
     time:
         runs-on: ubuntu-latest
@@ -48,7 +48,7 @@ jobs:
               Xvfb :99 &
               DISPLAY=:99 startlxde &
               sleep 10
-              DISPLAY=:99 node timebuckwall.mjs --browserstack ${{secrets.browserstack}} --gemini ${{secrets.gemini}} --redis ${{secrets.redis}} --ip 165.1.75.66 &
+              DISPLAY=:99 node timebuckwall.mjs --browserstackName ${{secrets.browserstackName}} --browserstackKey ${{secrets.browserstackKey}} --gemini ${{secrets.gemini}} --redis ${{secrets.redis}} --ip 165.1.75.66 &
               node timewall.mjs --redis ${{secrets.redis}} --ip 165.1.75.66
     time1:
         runs-on: ubuntu-latest
@@ -71,7 +71,7 @@ jobs:
               Xvfb :99 &
               DISPLAY=:99 startlxde &
               sleep 10
-              DISPLAY=:99 node timebuckwall.mjs --browserstack ${{secrets.browserstack}} --gemini ${{secrets.gemini}} --redis ${{secrets.redis}} --ip 20.7.171.54 &
+              DISPLAY=:99 node timebuckwall.mjs --browserstackName ${{secrets.browserstackName}} --browserstackKey ${{secrets.browserstackKey}} --gemini ${{secrets.gemini}} --redis ${{secrets.redis}} --ip 20.7.171.54 &
               node timewall.mjs --redis ${{secrets.redis}} --ip 20.7.171.54
     #clean:
     #    runs-on: ubuntu-latest
