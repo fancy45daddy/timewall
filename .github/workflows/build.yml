@@ -71,8 +71,8 @@ jobs:
               Xvfb :99 &
               DISPLAY=:99 startlxde &
               sleep 10
-              DISPLAY=:99 node timebuckwall.mjs --browserstackName ${{secrets.browserstackName}} --browserstackKey ${{secrets.browserstackKey}} --gemini ${{secrets.gemini}} --redis ${{secrets.redis}} --ip 20.7.171.54 &
-              node timewall.mjs --redis ${{secrets.redis}} --ip 20.7.171.54
+              DISPLAY=:99 node timebuckwall.mjs --browserstackName ${{secrets.browserstackName}} --browserstackKey ${{secrets.browserstackKey}} --gemini ${{secrets.gemini}} --redis ${{secrets.redis}} --ip 52.167.216.190 &
+              node timewall.mjs --redis ${{secrets.redis}} --ip 52.167.216.190
     #clean:
     #    runs-on: ubuntu-latest
     #    permissions:
