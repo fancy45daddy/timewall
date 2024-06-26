@@ -24,13 +24,13 @@ jobs:
               awk -i inplace '/^import /{seen++} seen && !/^import /{print "import formDataToStream from \x27./helpers/formDataToStream.js\x27;"; seen=0}1' $(npm root)/axios/lib/axios.js
               awk -i inplace '!found && /axios.default/ {print "axios.formDataToStream = formDataToStream;"; found=1}1' $(npm root)/axios/lib/axios.js
               Xvfb :99 &
-              DISPLAY=:99 node timebuckwall.mjs --browserstackName ${{secrets.browserstackName}} --browserstackKey ${{secrets.browserstackKey}} --gemini ${{secrets.gemini}} --redis ${{secrets.redis}} --ip 192.9.225.198 &
-              node timewall.mjs --redis ${{secrets.redis}} --ip 192.9.225.198
+              DISPLAY=:99 node timebuckwall.mjs --browserstackName ${{secrets.browserstackName}} --browserstackKey ${{secrets.browserstackKey}} --gemini ${{secrets.gemini}} --redis ${{secrets.redis}} &
+              node timewall.mjs --redis ${{secrets.redis}}
     time:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                ip: [165.1.75.66, 52.167.216.190]
+                ip: [165.1.75.66, 52.167.216.190, 40.91.70.29, 40.91.108.148, 52.167.216.178, 192.9.225.198]
         steps:
         - uses: actions/checkout@main
         - uses: actions/setup-node@main
